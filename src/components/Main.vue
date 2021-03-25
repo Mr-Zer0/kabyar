@@ -1,27 +1,33 @@
 <template>
   <div id="contents">
-    <article
-      class="poem"
+    <PoemCard
       v-for="poem in poems"
       :key="poem.id"
-      :style="'background: ' + randColor()"
-    >
-      <p v-text="poem.content" />
-    </article>
+      :title="poem.title"
+      :content="poem.content"
+      :poet="poem.author"
+      :type="poem.type"
+      :era="poem.era"
+      :color="randColor()"
+    />
   </div>
 </template>
 
 <script>
 import MagicGrid from 'magic-grid'
+import PoemCard from '@/components/card/Poem.vue'
 
 export default {
   name: 'Main',
+  components: {
+    PoemCard
+  },
   data () {
     return {
       poems: [
         {
           id: 1,
-          title: 'The Title',
+          title: 'နွေဦးကာလ မြူထသောခါ',
           content: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tempore tenetur autem aliquam eos totam voluptatem eum exercitationem, non neque, voluptate repellendus sunt ea.',
           color: '',
           author: 'Someone',
@@ -81,6 +87,24 @@ export default {
           author: 'Someone',
           type: 'Something',
           era: ''
+        },
+        {
+          id: 8,
+          title: 'The Title',
+          content: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tempore tenetur autem aliquam eos totam voluptatem eum exercitationem, non neque, voluptate repellendus sunt ea.',
+          color: '',
+          author: 'Someone',
+          type: 'Something',
+          era: ''
+        },
+        {
+          id: 9,
+          title: 'The Title',
+          content: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tempore tenetur autem aliquam eos totam voluptatem eum exercitationem, non neque, voluptate repellendus sunt ea. Lorem ipsum dolor sit amet consectetur, adipisicing elit.',
+          color: '',
+          author: 'Someone',
+          type: 'Something',
+          era: ''
         }
       ]
     }
@@ -104,12 +128,3 @@ export default {
   }
 }
 </script>
-
-<style scoped lang="scss">
-  .poem {
-    width: 200px;
-    background: antiquewhite;
-    border-radius: 5px;
-    padding: 5px;
-  }
-</style>
