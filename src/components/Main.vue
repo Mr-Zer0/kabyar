@@ -8,7 +8,7 @@
       :poet="poem.author"
       :type="poem.type"
       :era="poem.era"
-      :color="randColor()"
+      :color="poem.color"
     />
   </div>
 </template>
@@ -27,9 +27,9 @@ export default {
       poems: [
         {
           id: 1,
-          title: 'နွေဦးကာလ မြူထသောခါ',
+          title: 'ရွှေနှင့်ယိုးမှား ပန်းစကား',
           content: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tempore tenetur autem aliquam eos totam voluptatem eum exercitationem, non neque, voluptate repellendus sunt ea.',
-          color: '',
+          color: '#f28ef0',
           author: 'Someone',
           type: 'Something',
           era: ''
@@ -38,7 +38,7 @@ export default {
           id: 2,
           title: 'The Title',
           content: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tempore tenetur autem aliquam eos totam voluptatem eum exercitationem, non neque, voluptate repellendus sunt ea. Itaque optio temporibus in commodi, voluptates voluptatem!',
-          color: '',
+          color: '#8bf4e1',
           author: 'Someone',
           type: 'Something',
           era: ''
@@ -47,7 +47,7 @@ export default {
           id: 3,
           title: 'The Title',
           content: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tempore tenetur autem aliquam eos totam voluptatem eum exercitationem, non neque, voluptate repellendus sunt ea. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tempore tenetur autem aliquam eos totam voluptatem eum exercitationem, non neque, voluptate repellendus sunt ea.',
-          color: '',
+          color: '#ffff8c',
           author: 'Someone',
           type: 'Something',
           era: ''
@@ -56,7 +56,7 @@ export default {
           id: 4,
           title: 'The Title',
           content: 'Itaque optio temporibus in commodi, voluptates voluptatem! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tempore tenetur autem aliquam eos totam voluptatem eum exercitationem, non neque, voluptate repellendus sunt ea. Itaque optio temporibus in commodi, voluptates voluptatem!',
-          color: '',
+          color: '#7093e0',
           author: 'Someone',
           type: 'Something',
           era: ''
@@ -65,7 +65,7 @@ export default {
           id: 5,
           title: 'The Title',
           content: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tempore tenetur autem aliquam eos totam voluptatem eum exercitationem, non neque, voluptate repellendus sunt ea. Itaque optio temporibus in commodi, voluptates voluptatem!',
-          color: '',
+          color: '#91ddf2',
           author: 'Someone',
           type: 'Something',
           era: ''
@@ -74,7 +74,7 @@ export default {
           id: 6,
           title: 'The Title',
           content: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tempore tenetur autem aliquam eos totam voluptatem eum exercitationem, non neque, voluptate repellendus sunt ea. Itaque optio temporibus in commodi, voluptates voluptatem! Lorem ipsum dolor sit amet consectetur.',
-          color: '',
+          color: '#aeff8c',
           author: 'Someone',
           type: 'Something',
           era: ''
@@ -83,7 +83,7 @@ export default {
           id: 7,
           title: 'The Title',
           content: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tempore tenetur autem aliquam eos totam voluptatem eum exercitationem, non neque, voluptate repellendus sunt ea. Itaque optio temporibus in commodi, voluptates voluptatem! Lorem ipsum dolor sit amet consectetur. Lorem ipsum dolor sit amet consectetur, adipisicing elit. ',
-          color: '',
+          color: '#fcb5c3',
           author: 'Someone',
           type: 'Something',
           era: ''
@@ -92,7 +92,7 @@ export default {
           id: 8,
           title: 'The Title',
           content: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tempore tenetur autem aliquam eos totam voluptatem eum exercitationem, non neque, voluptate repellendus sunt ea.',
-          color: '',
+          color: '#f473b3',
           author: 'Someone',
           type: 'Something',
           era: ''
@@ -101,7 +101,7 @@ export default {
           id: 9,
           title: 'The Title',
           content: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tempore tenetur autem aliquam eos totam voluptatem eum exercitationem, non neque, voluptate repellendus sunt ea. Lorem ipsum dolor sit amet consectetur, adipisicing elit.',
-          color: '',
+          color: '#adffe3',
           author: 'Someone',
           type: 'Something',
           era: ''
