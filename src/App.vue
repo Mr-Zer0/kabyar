@@ -1,8 +1,28 @@
 <template>
   <router-view/>
+
+  <BottomBar />
 </template>
 
+<script>
+import BottomBar from '@/components/UI/BottomBar.vue'
+
+export default {
+  components: {
+    BottomBar
+  }
+}
+</script>
+
 <style lang="scss">
+body {
+  padding: 0;
+  margin: 0;
+}
+h1, h2, h3, h4, h5, h6, p {
+  padding: 0;
+  margin: 0;
+}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
