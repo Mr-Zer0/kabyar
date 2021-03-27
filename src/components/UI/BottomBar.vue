@@ -1,25 +1,9 @@
 <template>
-  <div id="app-bottom-bar">
-
+  <div id="app-bottom-bar" :class="{ 'hidden-navbar': !showNavbar }">
     <nav id="bottom-navigation">
-      <li>
-        <a href="#">
-          <SvgIcon type="mdi" :path="mdiHome" size="32" />
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          <SvgIcon type="mdi" :path="mdiMagnify" size="32" />
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          <SvgIcon type="mdi" :path="mdiTag" size="32" />
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          <SvgIcon type="mdi" :path="mdiViewDashboard" size="32" />
+      <li v-for="(item, index) in navigation" :key="index">
+        <a :href="item.link">
+          <SvgIcon type="mdi" :path="item.icon" :size="32" />
         </a>
       </li>
     </nav>
@@ -42,10 +26,53 @@ export default {
   },
   data () {
     return {
-      mdiHome,
-      mdiMagnify,
-      mdiTag,
-      mdiViewDashboard
+      showNavbar: true,
+      lastScrollPosition: 0,
+      scrollValue: 0,
+      navigation: [
+        {
+          link: '/',
+          title: 'Home',
+          icon: mdiHome
+        },
+        {
+          link: '/',
+          title: 'Search',
+          icon: mdiMagnify
+        },
+        {
+          link: '/',
+          title: 'Type',
+          icon: mdiTag
+        },
+        {
+          link: '/',
+          title: 'Era',
+          icon: mdiViewDashboard
+        }
+      ]
+    }
+  },
+  mounted () {
+    this.lastScrollPosition = window.pageYOffset
+    window.addEventListener('scroll', this.onScroll)
+    const viewportMeta = document.createElement('meta')
+    viewportMeta.name = 'viewport'
+    viewportMeta.content = 'width=device-width, initial-scale=1'
+    document.head.appendChild(viewportMeta)
+  },
+  methods: {
+    onScroll () {
+      const OFFSET = 60
+
+      if (window.pageYOffset < 0) {
+        return
+      }
+      if (Math.abs(window.pageYOffset - this.lastScrollPosition) < OFFSET) {
+        return
+      }
+      this.showNavbar = window.pageYOffset < this.lastScrollPosition
+      this.lastScrollPosition = window.pageYOffset
     }
   }
 }
@@ -60,6 +87,8 @@ export default {
   left: 0;
   right: 0;
   bottom: 0;
+
+  transition: bottom 300ms ease-in-out 0s, opacity 300ms ease-in-out 0s, height 300ms ease-in-out 0s;
 
   #bottom-navigation {
     background-color: #ffffff;
@@ -87,39 +116,16 @@ export default {
 
       a {
         display: inline-flex;
+        color: grey;
       }
     }
   }
 }
 
-// #app-bottom-bar {
-//   z-index: 3;
+.hidden-navbar {
+  transition: bottom 300ms ease-in-out 0s, opacity 300ms ease-in-out 0s;
 
-//   border-radius: 7px;
-//   box-shadow: 0 0 15px 3px rgb(0, 0, 0, 15%);
-//   background: #ffffff;
-
-//   position: fixed;
-//   bottom: 10px;
-//   left: 50%;
-//   transform: translate(-50%, 0);
-// }
-// #bottom-navigation {
-//   display: flex;
-//   flex-wrap: wrap;
-
-//   li {
-//     list-style: none;
-//     background: blue;
-
-//     a {
-//       background: pink;
-//       padding: 5px 10px;
-//       margin: 0;
-//       display: inline-flex;
-//       text-decoration: none;
-//       color: inherit;
-//     }
-//   }
-// }
+  bottom: -60px !important;
+  opacity: 0;
+}
 </style>
