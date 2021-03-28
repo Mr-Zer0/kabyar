@@ -42,7 +42,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import '../../assets/style/_variables.scss';
+@import '../assets/style/_variables.scss';
 
 .poem-card {
   width: 240px;

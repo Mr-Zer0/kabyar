@@ -15,7 +15,7 @@
 
 <script>
 import MagicGrid from 'magic-grid'
-import PoemCard from '@/components/card/Poem.vue'
+import PoemCard from '@/components/PoemCard.vue'
 
 export default {
   name: 'Main',
