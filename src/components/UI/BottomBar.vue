@@ -53,13 +53,11 @@ export default {
       ]
     }
   },
-  mounted () {
-    this.lastScrollPosition = window.pageYOffset
+  created () {
     window.addEventListener('scroll', this.onScroll)
-    const viewportMeta = document.createElement('meta')
-    viewportMeta.name = 'viewport'
-    viewportMeta.content = 'width=device-width, initial-scale=1'
-    document.head.appendChild(viewportMeta)
+  },
+  unmounted () {
+    window.removeEventListener('scroll')
   },
   methods: {
     onScroll () {
