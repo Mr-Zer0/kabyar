@@ -110,20 +110,29 @@ export default {
     }
   },
   mounted () {
-    const mg = new MagicGrid({
-      container: '#contents',
-      static: false,
-      animate: true,
-      items: 9,
-      maxColumns: 6,
-      gutter: 20
-    })
+    const events = ['load', 'resize']
 
-    mg.listen()
+    events.forEach(element => {
+      window.addEventListener(element, () => {
+        this.makeGrid()
+      })
+    })
   },
   methods: {
     randColor () {
       return '#' + Math.floor(Math.random() * 16777215).toString(16)
+    },
+    makeGrid () {
+      const mg = new MagicGrid({
+        container: '#contents',
+        static: false,
+        animate: true,
+        items: 9,
+        maxColumns: 6,
+        gutter: 20
+      })
+
+      mg.positionItems()
     }
   }
 }
