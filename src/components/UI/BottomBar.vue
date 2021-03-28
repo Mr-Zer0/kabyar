@@ -1,12 +1,10 @@
 <template>
   <div id="app-bottom-bar" :class="{ 'hidden-navbar': !showNavbar }">
-    <nav id="bottom-navigation">
-      <li v-for="(item, index) in navigation" :key="index">
-        <a :href="item.link">
-          <SvgIcon type="mdi" :path="item.icon" :size="32" />
-        </a>
-      </li>
-    </nav>
+    <div id="bottom-navigation">
+      <a v-for="(item, index) in navigation" :key="index" :href="item.link">
+        <SvgIcon type="mdi" :path="item.icon" :size="32" />
+      </a>
+    </div>
   </div>
 </template>
 
@@ -90,32 +88,26 @@ export default {
 
   #bottom-navigation {
     background-color: #ffffff;
-    height: 60px;
+    height: 52px;
     box-shadow: rgb(0 0 0 / 10%) 0px 0px 8px;
     margin-bottom: 16px;
     margin-left: auto;
     margin-right: auto;
     box-sizing: border-box;
-    border-radius: 7px;
+    border-radius: 15px;
     width: 264px;
-
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
+    padding: 0 7px;
 
-    li {
-      list-style: none;
-
-      flex: 1 1 auto;
-      justify-content: center;
+    a {
+      display: inline-flex;
+      color: grey;
       align-items: center;
+      justify-content: center;
       text-align: center;
-
-      a {
-        display: inline-flex;
-        color: grey;
-      }
     }
   }
 }
