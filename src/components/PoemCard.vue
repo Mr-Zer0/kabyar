@@ -1,5 +1,9 @@
 <template>
-  <article class="poem-card" :style="'background: ' + color">
+  <article
+    class="poem-card"
+    :style="'background: ' + color"
+    @click="redirect"
+  >
     <div class="poem-info">
       <span class="poem-poet" v-text="poet" />
       <span class="poem-type" v-text="type" />
@@ -37,6 +41,11 @@ export default {
       type: String,
       required: true
     }
+  },
+  methods: {
+    redirect () {
+      this.$router.push('poem')
+    }
   }
 }
 </script>
@@ -51,6 +60,7 @@ export default {
   padding: 5px;
   box-shadow: 0 2px 2px 0 rgb(0 0 0 / 14%), 0 3px 1px -2px rgb(0 0 0 / 20%), 0 1px 5px 0 rgb(0 0 0 / 12%);
   box-sizing: border-box;
+  cursor: pointer;
 
   @media (max-width: $sm) {
     width: 47%;

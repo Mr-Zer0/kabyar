@@ -1,7 +1,9 @@
 <template>
   <div class="navigation">
     <div>
-      <SvgIcon type="mdi" :path="mdiArrowLeft" :size="24" />
+      <router-link to="/">
+        <SvgIcon type="mdi" :path="mdiArrowLeft" :size="24" />
+      </router-link>
     </div>
     <div>
       <SvgIcon type="mdi" :path="mdiShareVariant" :size="24" />

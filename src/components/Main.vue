@@ -125,6 +125,8 @@ export default {
       gutter: this.gutter
     })
 
+    this.grid.positionItems()
+
     const events = ['load', 'resize']
 
     events.forEach(element => {
@@ -132,11 +134,6 @@ export default {
         this.grid.positionItems()
       })
     })
-  },
-  methods: {
-    randColor () {
-      return '#' + Math.floor(Math.random() * 16777215).toString(16)
-    }
   }
 }
 </script>
