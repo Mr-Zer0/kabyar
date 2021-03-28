@@ -15,19 +15,13 @@ export default {
 </script>
 
 <style lang="scss">
+@import './assets/style/_reset.scss';
+
 @font-face {
   font-family: 'MyanmarSansPro';
   src: url('./assets/fonts/MyanmarSansProRegular.woff2');
 }
 
-body {
-  padding: 0;
-  margin: 0;
-}
-h1, h2, h3, h4, h5, h6, p {
-  padding: 0;
-  margin: 0;
-}
 #app {
   font-family: Avenir, Helvetica, Arial, MyanmarSansPro, sans-serif;
   -webkit-font-smoothing: antialiased;

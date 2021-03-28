@@ -24,6 +24,7 @@ export default {
   },
   data () {
     return {
+      grid: null,
       poems: [
         {
           id: 1,
@@ -109,30 +110,32 @@ export default {
       ]
     }
   },
+  computed: {
+    gutter () {
+      return (window.innerWidth <= 576) ? 7 : 15
+    }
+  },
   mounted () {
+    this.grid = new MagicGrid({
+      container: '#contents',
+      static: false,
+      animate: true,
+      items: 9,
+      maxColumns: 6,
+      gutter: this.gutter
+    })
+
     const events = ['load', 'resize']
 
     events.forEach(element => {
       window.addEventListener(element, () => {
-        this.makeGrid()
+        this.grid.positionItems()
       })
     })
   },
   methods: {
     randColor () {
       return '#' + Math.floor(Math.random() * 16777215).toString(16)
-    },
-    makeGrid () {
-      const mg = new MagicGrid({
-        container: '#contents',
-        static: false,
-        animate: true,
-        items: 9,
-        maxColumns: 6,
-        gutter: 20
-      })
-
-      mg.positionItems()
     }
   }
 }
