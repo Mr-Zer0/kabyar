@@ -39,7 +39,7 @@ export default {
       container: '#contents',
       static: false,
       animate: true,
-      items: 5,
+      items: 7,
       maxColumns: 6,
       gutter: this.gutter
     })
