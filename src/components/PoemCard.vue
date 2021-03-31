@@ -9,7 +9,7 @@
       <span class="poem-type" v-text="type" />
     </div>
     <h3 v-text="title" />
-    <p v-html="content" />
+    <div class="poem-content" v-html="excerpt" />
   </article>
 </template>
 
@@ -42,9 +42,27 @@ export default {
       required: true
     }
   },
+  computed: {
+    excerpt () {
+      const arr = this.content.split('</p>')
+
+      if (arr.length <= 20) return this.content
+
+      const counter = Math.ceil(arr.length * 0.4)
+      const poem = arr.splice(0, counter)
+
+      return poem.join('</p>') + '</p><p>...</p>'
+    }
+  },
   methods: {
     redirect () {
-      this.$router.push('poem')
+      this.$store.commit('poem/setTitle', this.title)
+      this.$store.commit('poem/setContent', this.content)
+      this.$store.commit('poem/setPoet', this.poet)
+      this.$store.commit('poem/setType', this.type)
+      this.$store.commit('poem/setEra', this.era)
+      this.$store.commit('poem/setColor', this.color)
+      this.$router.push('Poem')
     }
   }
 }
