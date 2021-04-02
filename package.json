@@ -11,6 +11,7 @@
     "@jamescoyle/vue-icon": "^0.1.0",
     "@mdi/js": "^5.9.55",
     "core-js": "^3.6.5",
+    "firebase": "8.3.1",
     "magic-grid": "^3.2.4",
     "vue": "^3.0.0",
     "vue-router": "^4.0.0-0",
