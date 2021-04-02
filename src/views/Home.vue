@@ -1,11 +1,11 @@
 <template>
   <div id="contents">
     <PoemCard
-      v-for="poem in poems"
-      :key="poem.id"
+      v-for="(poem, index) in poems"
+      :key="index"
       :title="poem.title"
       :content="poem.content"
-      :poet="poem.author"
+      :poet="poem.poet"
       :type="poem.type"
       :era="poem.era"
       :color="poem.color"
@@ -14,9 +14,9 @@
 </template>
 
 <script>
-import poems from '@/store/data.json'
-import MagicGrid from 'magic-grid'
+// import MagicGrid from 'magic-grid'
 import PoemCard from '@/components/PoemCard.vue'
+import { mapState } from 'vuex'
 
 export default {
   name: 'Home',
@@ -25,34 +25,36 @@ export default {
   },
   data () {
     return {
-      grid: null,
-      poems
+      grid: null
     }
   },
   computed: {
     gutter () {
       return (window.innerWidth <= 576) ? 7 : 15
-    }
+    },
+    ...mapState({
+      poems: state => state.poems.poems
+    })
   },
   mounted () {
-    this.grid = new MagicGrid({
-      container: '#contents',
-      static: false,
-      animate: true,
-      items: 7,
-      maxColumns: 6,
-      gutter: this.gutter
-    })
+    // this.grid = new MagicGrid({
+    //   container: '#contents',
+    //   static: false,
+    //   animate: true,
+    //   items: 7,
+    //   maxColumns: 6,
+    //   gutter: this.gutter
+    // })
 
-    this.grid.positionItems()
+    // this.grid.positionItems()
 
-    const events = ['load', 'resize']
+    // const events = ['load', 'resize']
 
-    events.forEach(element => {
-      window.addEventListener(element, () => {
-        this.grid.positionItems()
-      })
-    })
+    // events.forEach(element => {
+    //   window.addEventListener(element, () => {
+    //     this.grid.positionItems()
+    //   })
+    // })
   }
 }
 </script>
