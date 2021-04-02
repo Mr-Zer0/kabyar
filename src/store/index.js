@@ -1,6 +1,24 @@
 import { createStore } from 'vuex'
+import poems from './poems.js'
+import { db } from '../firebase.js'
 
-export default createStore({
+// Fetch initial data
+db.collection('poems').get().then(querySnapshot => {
+  const contents = []
+
+  querySnapshot.forEach(element => {
+    const poem = element.data()
+    poem.id = element.id
+
+    contents.push(poem)
+  })
+
+  store.commit('poems/setPoems', contents)
+}).catch(error => {
+  console.log(error)
+})
+
+const store = createStore({
   state: {
   },
   mutations: {
@@ -8,36 +26,8 @@ export default createStore({
   actions: {
   },
   modules: {
-    poem: {
-      namespaced: true,
-      state: () => ({
-        title: '',
-        content: '',
-        poet: '',
-        type: '',
-        era: '',
-        color: ''
-      }),
-      mutations: {
-        setTitle (state, value) {
-          state.title = value
-        },
-        setContent (state, value) {
-          state.content = value
-        },
-        setPoet (state, value) {
-          state.poet = value
-        },
-        setType (state, value) {
-          state.type = value
-        },
-        setEra (state, value) {
-          state.era = value
-        },
-        setColor (state, value) {
-          state.color = value
-        }
-      }
-    }
+    poems
   }
 })
+
+export default store
