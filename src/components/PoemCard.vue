@@ -8,7 +8,7 @@
       <span class="poem-poet" v-text="poet" />
       <span class="poem-type" v-text="type" />
     </div>
-    <h3 v-text="title" />
+    <h4 v-text="title" />
     <div class="poem-content" v-html="excerpt" />
   </article>
 </template>
@@ -95,7 +95,7 @@ export default {
     }
   }
 
-  h3 {
+  h4 {
     padding: 7px 0 12px 0;
   }
 }
