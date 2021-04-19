@@ -1,38 +1,30 @@
 {
   "name": "kabyar",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate",
+    "lint:js": "eslint --ext \".js,.vue\" --ignore-path .gitignore .",
+    "lint": "yarn lint:js"
   },
   "dependencies": {
-    "@jamescoyle/vue-icon": "^0.1.0",
-    "@mdi/js": "^5.9.55",
-    "core-js": "^3.6.5",
-    "firebase": "8.3.1",
-    "magic-grid": "^3.2.4",
-    "vue": "^3.0.0",
-    "vue-router": "^4.0.0-0",
-    "vuex": "^4.0.0-0"
+    "@nuxtjs/axios": "^5.13.1",
+    "@nuxtjs/pwa": "^3.3.5",
+    "core-js": "^3.9.1",
+    "nuxt": "^2.15.3"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "~4.5.0",
-    "@vue/cli-plugin-eslint": "~4.5.0",
-    "@vue/cli-plugin-router": "~4.5.0",
-    "@vue/cli-plugin-vuex": "~4.5.0",
-    "@vue/cli-service": "~4.5.0",
-    "@vue/compiler-sfc": "^3.0.0",
-    "@vue/eslint-config-standard": "^5.1.2",
+    "@nuxtjs/eslint-config": "^6.0.0",
+    "@nuxtjs/eslint-module": "^3.0.2",
     "babel-eslint": "^10.1.0",
-    "eslint": "^6.7.2",
-    "eslint-plugin-import": "^2.20.2",
-    "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-promise": "^4.2.1",
-    "eslint-plugin-standard": "^4.0.0",
-    "eslint-plugin-vue": "^7.0.0",
-    "sass": "^1.26.5",
-    "sass-loader": "^8.0.2"
+    "eslint": "^7.22.0",
+    "eslint-config-prettier": "^8.1.0",
+    "eslint-plugin-nuxt": "^2.0.0",
+    "eslint-plugin-prettier": "^3.3.1",
+    "eslint-plugin-vue": "^7.7.0",
+    "prettier": "^2.2.1"
   }
 }
