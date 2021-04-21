@@ -45,4 +45,11 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},
+
+  serverMiddleware: [
+    {
+      path: 'api/v1',
+      handler: '~/server-middleware/rest.js',
+    },
+  ],
 }
