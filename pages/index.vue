@@ -1,5 +1,7 @@
 <template>
   <div class="container">
+    <h3 v-for="(poem, key) in poems" :key="key" v-text="poem.title" />
+
     <div>
       <Logo />
       <h1 class="title">kabyar</h1>
@@ -26,7 +28,19 @@
 </template>
 
 <script>
-export default {}
+export default {
+  data() {
+    return {
+      poems: [],
+    }
+  },
+  mounted() {
+    this.$axios.get('http://localhost:3000/api/v1/poem').then((response) => {
+      // eslint-disable-next-line no-console
+      this.poems = response.data.data
+    })
+  },
+}
 </script>
 
 <style>
