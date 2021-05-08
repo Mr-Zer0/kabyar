@@ -1,13 +1,23 @@
 <template>
   <div>
+    <TopBar />
     <Nuxt />
   </div>
 </template>
 
+<script>
+import TopBar from '@@/components/ui/TopBar.vue'
+
+export default {
+  components: {
+    TopBar,
+  },
+}
+</script>
+
 <style>
 html {
-  font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI',
-    Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-family: Avenir, Helvetica, Arial, MyanmarSansPro, sans-serif;
   font-size: 16px;
   word-spacing: 1px;
   -ms-text-size-adjust: 100%;
