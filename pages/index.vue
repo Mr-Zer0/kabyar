@@ -1,77 +1,39 @@
 <template>
   <div class="container">
-    <h3 v-for="(poem, key) in poems" :key="key" v-text="poem.title" />
-
-    <div>
-      <Logo />
-      <h1 class="title">kabyar</h1>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--green"
-        >
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--grey"
-        >
-          GitHub
-        </a>
-      </div>
-    </div>
+    <PoemCard
+      v-for="(poem, index) in poems"
+      :key="index"
+      :title="poem.title"
+      :poem="poem.poem"
+      :poet="poem.poet"
+      :type="poem.type"
+    />
   </div>
 </template>
 
 <script>
+import PoemCard from '@@/components/PoemCard.vue'
+
 export default {
+  components: {
+    PoemCard,
+  },
   data() {
     return {
       poems: [],
     }
   },
-  mounted() {
-    this.$axios.get('http://localhost:3000/api/v1/poem').then((response) => {
+  async fetch() {
+    try {
+      const query = await this.$axios.get(
+        process.env.baseUrl + '/api/v1/poems/all'
+      )
+
+      this.poems = query.data.data
+    } catch (error) {
       // eslint-disable-next-line no-console
-      this.poems = response.data.data
-    })
+      console.log(error)
+    }
   },
 }
 </script>
-
-<style>
-.container {
-  margin: 0 auto;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
-.title {
-  font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
-}
-
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
-}
-</style>
