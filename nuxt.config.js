@@ -46,10 +46,14 @@ export default {
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},
 
+  env: {
+    baseUrl: process.env.BASE_URL,
+  },
+
   serverMiddleware: [
     {
-      path: 'api/v1',
-      handler: '~/server-middleware/rest.js',
+      path: 'api/v1/poems',
+      handler: '~/server-middleware/poems.js',
     },
   ],
 }
