@@ -18,6 +18,7 @@ express.get('/all', (req, res) => {
           poet: poem.poet,
           title: poem.title,
           type: poem.type,
+          color: poem.color,
         })
       })
 

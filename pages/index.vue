@@ -7,6 +7,7 @@
       :poem="poem.poem"
       :poet="poem.poet"
       :type="poem.type"
+      :color="poem.color"
     />
   </div>
 </template>
@@ -37,3 +38,17 @@ export default {
   },
 }
 </script>
+
+<style lang="scss">
+.container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+p:empty::before {
+  content: ' ';
+  white-space: pre;
+}
+</style>
