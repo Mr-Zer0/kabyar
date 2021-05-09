@@ -26,4 +26,8 @@ express.get('/all', (req, res) => {
     })
 })
 
+express.get('/:id', (req, res) => {
+  res.json({ data: req.params.id })
+})
+
 module.exports = express
