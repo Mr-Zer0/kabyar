@@ -10,8 +10,8 @@
       <div class="search">
         <div class="exteria">
           <svg
-            width="26"
-            height="26"
+            width="25"
+            height="25"
             viewBox="0 0 24 24"
             data-v-11a2f51e=""
             data-v-54483f86=""
@@ -42,6 +42,7 @@
   padding: 0 20px;
   background: #fff;
   width: 100%;
+  z-index: 100;
 
   position: fixed;
 
@@ -56,6 +57,7 @@
 
   .heading {
     display: flex;
+    top: 0;
     align-items: center;
 
     .title {
@@ -69,7 +71,7 @@
     .search {
       .exteria {
         background: #eee;
-        padding: 10px;
+        padding: 9px 10px;
         border-radius: 25px;
 
         display: flex;
