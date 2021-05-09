@@ -43,6 +43,7 @@ export default {
   padding: 7px;
   box-sizing: border-box;
   cursor: pointer;
+  color: #2c3e50;
 
   .poem-info {
     display: flex;
