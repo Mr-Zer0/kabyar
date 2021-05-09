@@ -1,20 +1,24 @@
 <template>
   <div id="container">
-    <PoemCard
+    <NuxtLink
       v-for="(poem, index) in poems"
       :key="index"
-      :title="poem.title"
-      :poem="poem.poem"
-      :poet="poem.poet"
-      :type="poem.type"
-      :color="poem.color"
-    />
+      :to="'/poem/' + poem.id"
+    >
+      <PoemCard
+        :title="poem.title"
+        :poem="poem.poem"
+        :poet="poem.poet"
+        :type="poem.type"
+        :color="poem.color"
+      />
+    </NuxtLink>
   </div>
 </template>
 
 <script>
-import PoemCard from '@@/components/PoemCard.vue'
 import MagicGrid from 'magic-grid'
+import PoemCard from '~/components/poem/PoemCard.vue'
 
 export default {
   components: {
@@ -22,17 +26,18 @@ export default {
   },
   data() {
     return {
-      poems: [],
       grid: null,
     }
   },
   async fetch() {
+    if (this.$store.state.poem.poems.length > 0) return
+
     try {
       const query = await this.$axios.get(
         process.env.baseUrl + '/api/v1/poems/all'
       )
 
-      this.poems = query.data.data
+      this.$store.commit('poem/setPoems', query.data.data)
     } catch (error) {
       // eslint-disable-next-line no-console
       console.log(error)
@@ -41,6 +46,9 @@ export default {
   computed: {
     gutter() {
       return window.innerWidth <= 576 ? 7 : 15
+    },
+    poems() {
+      return this.$store.state.poem.poems
     },
   },
   mounted() {
@@ -67,6 +75,11 @@ export default {
 
       this.grid.positionItems()
     },
+    redirect() {
+      console.log('clicked')
+
+      this.$router.push('/poem/saefasf')
+    },
   },
 }
 </script>
@@ -75,5 +88,9 @@ export default {
 p:empty::before {
   content: ' ';
   white-space: pre;
+}
+a {
+  text-decoration: none;
+  color: inherit;
 }
 </style>
