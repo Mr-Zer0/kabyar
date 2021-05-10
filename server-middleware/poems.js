@@ -1,9 +1,11 @@
 import { firedb } from '../utilities/firebase.js'
 import express from './rest.js'
 
+const collection = 'poems'
+
 express.get('/all', (req, res) => {
   firedb
-    .collection('poems')
+    .collection(collection)
     .get()
     .then((querySnapshot) => {
       const contents = []
@@ -27,7 +29,13 @@ express.get('/all', (req, res) => {
 })
 
 express.get('/:id', (req, res) => {
-  res.json({ data: req.params.id })
+  firedb
+    .collection(collection)
+    .doc(req.params.id)
+    .get()
+    .then((doc) => {
+      res.json({ data: doc.data() })
+    })
 })
 
 module.exports = express
