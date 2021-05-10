@@ -28,7 +28,13 @@
           <span>{{ poem.type }}</span>
           <span>{{ poem.era }}</span>
         </div>
-        <div class="content" v-html="poem.poem" />
+        <div class="content">
+          <p
+            v-for="(content, index) in contents"
+            :key="index"
+            v-text="content"
+          />
+        </div>
       </div>
     </div>
   </div>
@@ -50,6 +56,22 @@ export default {
       this.poem = query.data.data
     } catch (error) {}
   },
+  computed: {
+    /**
+     * ! SECURITY CONCERN
+     * v-html can lead to xss attack
+     * instead of using v-html, remove all "p" tags and loop it as String array
+     */
+    contents() {
+      const splited = this.poem.poem.split('<p>')
+
+      const cleared = splited.map((elem) => {
+        return elem.replace('</p>', '')
+      })
+
+      return cleared
+    },
+  },
   methods: {
     back() {
       this.$router.back()
@@ -65,7 +87,16 @@ export default {
 
 .back {
   position: fixed;
-  text-align: center;
+  left: 20px;
+  top: 90px;
+
+  button {
+    padding: 7px;
+    border-radius: 25px;
+    line-height: 0;
+    background: #fff;
+    border: none;
+  }
 }
 </style>
 
