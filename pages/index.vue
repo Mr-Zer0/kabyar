@@ -53,13 +53,17 @@ export default {
   },
   mounted() {
     this.makeGrid()
-
     const events = ['resize', 'load']
-
     events.forEach((elem) => {
       window.addEventListener(elem, () => {
         this.grid.positionItems()
       })
+    })
+  },
+  beforeDestroy() {
+    const events = ['resize', 'load']
+    events.forEach((elem) => {
+      window.removeEventListener(elem, () => {})
     })
   },
   methods: {
@@ -74,11 +78,6 @@ export default {
       })
 
       this.grid.positionItems()
-    },
-    redirect() {
-      console.log('clicked')
-
-      this.$router.push('/poem/saefasf')
     },
   },
 }
