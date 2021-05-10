@@ -50,15 +50,17 @@ export default {
     poems() {
       return this.$store.state.poem.poems
     },
+    fetching() {
+      return this.$fetchState.pending
+    },
   },
   mounted() {
+    if (this.poems.length > 0) {
+      this.makeGrid()
+    }
+  },
+  updated() {
     this.makeGrid()
-    const events = ['resize', 'load']
-    events.forEach((elem) => {
-      window.addEventListener(elem, () => {
-        this.grid.positionItems()
-      })
-    })
   },
   beforeDestroy() {
     const events = ['resize', 'load']
@@ -68,7 +70,7 @@ export default {
   },
   methods: {
     makeGrid() {
-      this.grid = new MagicGrid({
+      const grid = new MagicGrid({
         container: '#container',
         static: false,
         animate: true,
@@ -77,11 +79,25 @@ export default {
         gutter: this.gutter,
       })
 
-      this.grid.positionItems()
+      grid.positionItems()
+
+      const events = ['resize', 'load']
+      events.forEach((elem) => {
+        window.addEventListener(elem, () => {
+          grid.positionItems()
+        })
+      })
     },
   },
 }
 </script>
+
+<style lang="scss" scoped>
+#container {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+</style>
 
 <style lang="scss">
 p:empty::before {
