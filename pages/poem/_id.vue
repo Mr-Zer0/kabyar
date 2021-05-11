@@ -1,39 +1,19 @@
 <template>
   <div class="container">
-    <div class="back">
-      <button @click="back">
-        <svg
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          data-v-11a2f51e=""
-          data-v-70e3cf1d=""
-          style="--sx: 1; --sy: 1; --r: 0deg"
-        >
-          <path
-            d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z"
-            data-v-11a2f51e=""
-          />
-        </svg>
-      </button>
-    </div>
+    <back-button class="back" @click="back" />
 
     <p v-if="$fetchState.pending">Loading ...</p>
 
-    <div v-else class="poem">
-      <div class="heading">
-        <h1>{{ poem.title }}</h1>
+    <div v-else class="main-wrapper">
+      <div class="main" :style="'background: ' + poem.color">
+        <FullPoem :title="poem.title" :poem="poem.poem" />
+
         <div class="info">
-          <span>{{ poem.poet }}</span>
-          <span>{{ poem.type }}</span>
-          <span>{{ poem.era }}</span>
-        </div>
-        <div class="content">
-          <p
-            v-for="(content, index) in contents"
-            :key="index"
-            v-text="content"
-          />
+          <PoemDetail :poet="poem.poet" :type="poem.type" :era="poem.era" />
+
+          <PoemShare />
+
+          <PoemOffline />
         </div>
       </div>
     </div>
@@ -41,7 +21,16 @@
 </template>
 
 <script>
+import BackButton from '~/components/ui/BackButton.vue'
+import FullPoem from '~/components/poem/FullPoem.vue'
+import PoemDetail from '~/components/poem/PoemDetail.vue'
+
 export default {
+  components: {
+    BackButton,
+    FullPoem,
+    PoemDetail,
+  },
   data: () => {
     return {
       poem: null,
@@ -56,46 +45,44 @@ export default {
       this.poem = query.data.data
     } catch (error) {}
   },
-  computed: {
-    /**
-     * ! SECURITY CONCERN
-     * v-html can lead to xss attack
-     * instead of using v-html, remove all "p" tags and loop it as String array
-     */
-    contents() {
-      const splited = this.poem.poem.split('<p>')
-
-      const cleared = splited.map((elem) => {
-        return elem.replace('</p>', '')
-      })
-
-      return cleared
-    },
-  },
   methods: {
     back() {
-      this.$router.back()
+      if (this.$store.state.poem.poems.length > 0) {
+        this.$router.back()
+      } else {
+        this.$router.push('/')
+      }
     },
   },
 }
 </script>
 
 <style lang="scss" scoped>
-.container {
-  background: pink;
-}
-
 .back {
   position: fixed;
   left: 20px;
   top: 90px;
+}
 
-  button {
-    padding: 7px;
-    border-radius: 25px;
-    line-height: 0;
-    background: #fff;
-    border: none;
+.main-wrapper {
+  width: 100%;
+
+  .main {
+    width: 750px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    border-radius: 7px;
+    overflow: hidden;
+    box-shadow: rgb(0 0 0 / 10%) 0px 1px 20px 0px;
+
+    .info {
+      background: #fff;
+      padding: 15px;
+      width: 345px;
+    }
   }
 }
 </style>
