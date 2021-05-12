@@ -9,11 +9,18 @@
         <FullPoem :title="poem.title" :poem="poem.poem" />
 
         <div class="info">
-          <PoemDetail :poet="poem.poet" :type="poem.type" :era="poem.era" />
+          <PoemDetail
+            :poet="poem.poet"
+            :type="poem.type"
+            :era="poem.era"
+            style="margin: 10px 0 25px 0"
+          />
 
-          <PoemShare />
+          <PoemShare style="margin-bottom: 25px" />
 
-          <PoemOffline />
+          <PoemOffline style="margin-bottom: 25px" />
+
+          <PoemIssue />
         </div>
       </div>
     </div>
@@ -24,12 +31,14 @@
 import BackButton from '~/components/ui/BackButton.vue'
 import FullPoem from '~/components/poem/FullPoem.vue'
 import PoemDetail from '~/components/poem/PoemDetail.vue'
+import PoemIssue from '~/components/poem/PoemIssue.vue'
 
 export default {
   components: {
     BackButton,
     FullPoem,
     PoemDetail,
+    PoemIssue,
   },
   data: () => {
     return {
@@ -66,9 +75,11 @@ export default {
 
 .main-wrapper {
   width: 100%;
+  margin-top: 20px;
+  margin-bottom: 20px;
 
   .main {
-    width: 750px;
+    width: 850px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;

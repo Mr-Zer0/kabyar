@@ -70,6 +70,8 @@ export default {
     display: flex;
     align-items: center;
     flex-wrap: nowrap;
+    padding-top: 5px;
+    padding-bottom: 5px;
 
     span {
       display: inherit;
