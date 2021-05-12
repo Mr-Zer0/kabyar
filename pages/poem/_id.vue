@@ -79,7 +79,7 @@ export default {
   margin-bottom: 20px;
 
   .main {
-    width: 850px;
+    width: 870px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;

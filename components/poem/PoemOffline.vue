@@ -2,12 +2,12 @@
   <section class="offline">
     <h3>အော့ဖ်လိုင်း သိမ်းဆည်းရန်</h3>
     <div class="offline-items">
-      <a href="#">
-        <DownloadIcon />
+      <a href="#" style="margin-right: 10px">
+        <DownloadIcon :width="32" :height="32" />
       </a>
 
       <a href="#">
-        <PrinterIcon />
+        <PrinterIcon :width="32" :height="32" />
       </a>
     </div>
   </section>
