@@ -1,7 +1,9 @@
 <template>
-  <div id="main">
+  <div id="kabyar">
     <TopBar />
-    <Nuxt class="body" />
+    <div class="body">
+      <Nuxt />
+    </div>
   </div>
 </template>
 
@@ -45,7 +47,8 @@ html {
 }
 
 .body {
-  padding-top: 90px;
-  padding-bottom: 20px;
+  padding-top: 70px;
+  width: 100%;
+  height: 100%;
 }
 </style>
