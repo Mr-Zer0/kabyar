@@ -35,7 +35,7 @@ app.get('/:id', async (req, res) => {
 
     if (!snapshot.exists) res.status(204).json({ data: [] })
 
-    res.status(200).json({ data: _makeContent(snapshot) })
+    res.status(200).json({ data: _makeContent(snapshot, true) })
   } catch (error) {
     // For development purpose
     res.send(error)
@@ -47,8 +47,14 @@ app.get('/:id', async (req, res) => {
  * @param {QuerySnapshot} snapshot
  * @returns Object
  */
-const _makeContent = (snapshot) => {
+const _makeContent = (snapshot, single = false) => {
   const data = snapshot.data()
+
+  if (single) {
+    data.id = snapshot.id
+
+    return data
+  }
 
   return {
     id: snapshot.id,
