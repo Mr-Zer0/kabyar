@@ -50,10 +50,9 @@ export default {
     baseUrl: process.env.BASE_URL,
   },
 
-  serverMiddleware: [
-    {
-      path: 'api/v1/poems',
-      handler: '~/server-middleware/poems.js',
-    },
-  ],
+  serverMiddleware: {
+    '/api/v1': '~/api/v1/index.js',
+    '/api/v1/poets': '~/api/v1/poets.js',
+    '/api/v1/poems': '~/api/v1/poems.js',
+  },
 }
