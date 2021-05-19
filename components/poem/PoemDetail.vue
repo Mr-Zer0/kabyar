@@ -4,8 +4,10 @@
       <span>
         <AccountIcon :width="19" :height="19" />
       </span>
+
       <span>
-        <a class="link" href="#" v-text="poet" />
+        <span v-if="poetId === ''" class="link" v-text="poet" />
+        <NuxtLink v-else :to="'/poet/' + poetId" class="link" v-text="poet" />
       </span>
     </div>
     <div class="type">
@@ -13,7 +15,8 @@
         <LabelIcon :width="19" :height="19" />
       </span>
       <span>
-        <a class="link" href="#" v-text="type" />
+        <span v-if="typeId === ''" class="link" v-text="type" />
+        <NuxtLink v-else :to="'/type/' + typeId" class="link" v-text="type" />
       </span>
     </div>
     <div class="era">
@@ -21,7 +24,8 @@
         <CalendarIcon :width="19" :height="19" />
       </span>
       <span>
-        <a class="link" href="#" v-text="era" />
+        <span v-if="eraId === ''" class="link" v-text="era" />
+        <NuxtLink v-else :to="'/era/' + eraId" class="link" v-text="era" />
       </span>
     </div>
   </section>
@@ -39,6 +43,18 @@ export default {
     CalendarIcon,
   },
   props: {
+    poetId: {
+      type: String,
+      default: '',
+    },
+    typeId: {
+      type: String,
+      default: '',
+    },
+    eraId: {
+      type: String,
+      default: '',
+    },
     poet: {
       type: String,
       default: 'အမည်မသိရှေးစာဆို',
@@ -77,7 +93,7 @@ export default {
       display: inherit;
       padding: 0 2px;
 
-      .link {
+      a.link {
         &:hover {
           color: orange;
         }

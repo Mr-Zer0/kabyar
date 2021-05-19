@@ -10,6 +10,9 @@
 
         <div class="info">
           <PoemDetail
+            :poet-id="poem.poet_id"
+            :type-id="poem.type_id"
+            :era-id="poem.era_id"
             :poet="poem.poet"
             :type="poem.type"
             :era="poem.era"
