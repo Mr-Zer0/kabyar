@@ -53,8 +53,10 @@ export default {
   },
 
   serverMiddleware: {
-    '/api/v1': '~/api/v1/index.js',
-    '/api/v1/poets': '~/api/v1/poets.js',
-    '/api/v1/poems': '~/api/v1/poems.js',
+    '/api': '~/api/endpoints/index.js',
+    '/api/v1/poets': '~/api/endpoints/poets.js',
+    '/api/v1/poems': '~/api/endpoints/poems.js',
+    '/api/v1/eras': '~/api/endpoints/eras.js',
+    '/api/v1/types': '~/api/endpoints/types.js',
   },
 }
