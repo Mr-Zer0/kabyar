@@ -34,7 +34,9 @@ export default {
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
-  axios: {},
+  axios: {
+    baseUrl: process.env.BASE_URL + '/api/v1',
+  },
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {
