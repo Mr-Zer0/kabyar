@@ -19,7 +19,7 @@
             style="margin: 10px 0 25px 0"
           />
 
-          <PoemShare style="margin-bottom: 25px" />
+          <PoemShare :poem-id="id" style="margin-bottom: 25px" />
 
           <PoemOffline style="margin-bottom: 25px" />
 
@@ -50,12 +50,15 @@ export default {
   },
   async fetch() {
     try {
-      const query = await this.$axios.get(
-        process.env.baseUrl + '/api/v1/poems/' + this.$route.params.id
-      )
+      const query = await this.$axios.get('/poems/' + this.id)
 
       this.poem = query.data.data
     } catch (error) {}
+  },
+  computed: {
+    id() {
+      return this.$route.params.id
+    },
   },
   methods: {
     back() {
@@ -86,7 +89,7 @@ export default {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     margin: 0 auto;
     border-radius: 7px;
     overflow: hidden;

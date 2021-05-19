@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <h1>Heyyyy.... I am poet detail page</h1>
+    <h1>{{ poet.name }}</h1>
   </div>
 </template>
 
@@ -9,13 +9,13 @@ export default {
   data: () => ({
     poet: null,
   }),
+
+  // Server side rendering - fetching data at server
   async fetch() {
     try {
-      const query = await this.$axios.get(
-        process.env.baseUrl + '/api/v1/poems/' + this.$route.params.id
-      )
+      const query = await this.$axios.get('/poets/' + this.$route.params.id)
 
-      this.poem = query.data.data
+      this.poet = query.data.data
     } catch (error) {}
   },
 }

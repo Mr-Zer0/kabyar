@@ -33,9 +33,7 @@ export default {
     if (this.$store.state.poem.poems.length > 0) return
 
     try {
-      const query = await this.$axios.get(
-        process.env.baseUrl + '/api/v1/poems/all'
-      )
+      const query = await this.$axios.get('/poems/all')
 
       this.$store.commit('poem/setPoems', query.data.data)
     } catch (error) {
@@ -49,9 +47,6 @@ export default {
     },
     poems() {
       return this.$store.state.poem.poems
-    },
-    fetching() {
-      return this.$fetchState.pending
     },
   },
   mounted() {

@@ -16,9 +16,7 @@ export default {
   }),
   async fetch() {
     try {
-      const result = await this.$axios.get(
-        process.env.baseUrl + '/api/v1/poets/all'
-      )
+      const result = await this.$axios.get('/poets/all')
 
       this.poets = result.data.data
     } catch (error) {}
