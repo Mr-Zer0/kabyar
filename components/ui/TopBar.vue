@@ -2,9 +2,9 @@
   <section class="topbar">
     <div class="heading">
       <div class="title">
-        <a href="#">
+        <NuxtLink to="/">
           <h1>ကဗျာ</h1>
-        </a>
+        </NuxtLink>
       </div>
 
       <div class="search">
@@ -28,9 +28,9 @@
     </div>
 
     <nav class="navigation">
-      <li><a href="#">ကဗျာဆရာ</a></li>
-      <li><a href="#">အမျိုးအစား</a></li>
-      <li><a href="#">ခေတ်</a></li>
+      <li><NuxtLink to="/poet" v-text="'ကဗျာဆရာ'" /></li>
+      <li><NuxtLink to="/type" v-text="'အမျိုးအစား'" /></li>
+      <li><NuxtLink to="/era" v-text="'ခေတ်'" /></li>
     </nav>
   </section>
 </template>
