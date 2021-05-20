@@ -1,6 +1,13 @@
 <template>
   <div class="container">
-    <PoetCard v-for="(poet, index) in poets" :key="index" :name="poet.name" />
+    <p v-if="$fetchState.pending">Loading ...</p>
+
+    <PoetCard
+      v-for="(poet, index) in poets"
+      v-else
+      :key="index"
+      :name="poet.name"
+    />
   </div>
 </template>
 
@@ -11,15 +18,19 @@ export default {
   components: {
     PoetCard,
   },
-  data: () => ({
-    poets: [],
-  }),
   async fetch() {
+    if (this.poets.length > 0) return
+
     try {
       const result = await this.$axios.get('/poets/all')
 
-      this.poets = result.data.data
+      this.$store.commit('poet/setPoets', result.data.data)
     } catch (error) {}
+  },
+  computed: {
+    poets() {
+      return this.$store.state.poet.poets
+    },
   },
 }
 </script>
