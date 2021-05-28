@@ -52,12 +52,9 @@ app.get('/:id', async (req, res) => {
  */
 const _makeContent = (snapshot) => {
   const data = snapshot.data()
-  return {
-    id: snapshot.id,
-    name: data.name,
-    bio: data.bio,
-    color: data.color,
-  }
+  data.id = snapshot.id
+
+  return data
 }
 
 module.exports = app

@@ -7,6 +7,9 @@
       v-else
       :key="index"
       :name="poet.name"
+      :bio="poet.bio"
+      :poems="poet.poem_count"
+      :color="poet.color"
     />
   </div>
 </template>
@@ -34,3 +37,17 @@ export default {
   },
 }
 </script>
+
+<style lang="scss" scoped>
+.container {
+  width: 90%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  .poem-card {
+    margin: 10px 0;
+  }
+}
+</style>
