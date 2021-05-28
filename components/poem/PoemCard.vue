@@ -5,7 +5,9 @@
       <span class="poem-type" v-text="type" />
     </div>
     <h3 class="poem-title">{{ title }}</h3>
-    <div class="poem-content" v-html="poem" />
+    <div class="poem-content">
+      <p v-for="(elem, index) in content" :key="index" v-text="elem" />
+    </div>
   </div>
 </template>
 
@@ -16,8 +18,8 @@ export default {
       type: String,
       required: true,
     },
-    poem: {
-      type: String,
+    content: {
+      type: Array,
       required: true,
     },
     poet: {

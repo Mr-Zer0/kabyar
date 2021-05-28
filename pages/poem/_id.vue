@@ -6,7 +6,7 @@
 
     <div v-else class="main-wrapper">
       <div class="main" :style="'background: ' + poem.color">
-        <FullPoem :title="poem.title" :poem="poem.poem" />
+        <FullPoem :title="poem.title" :content="poem.content" />
 
         <div class="info">
           <PoemDetail

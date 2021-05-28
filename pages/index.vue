@@ -1,13 +1,16 @@
 <template>
   <div id="container">
+    <p v-if="$fetchState.pending">Loading ...</p>
+
     <NuxtLink
       v-for="(poem, index) in poems"
+      v-else
       :key="index"
       :to="'/poem/' + poem.id"
     >
       <PoemCard
         :title="poem.title"
-        :poem="poem.poem"
+        :content="poem.content"
         :poet="poem.poet"
         :type="poem.type"
         :color="poem.color"
