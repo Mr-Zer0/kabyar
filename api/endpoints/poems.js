@@ -58,7 +58,7 @@ const _makeContent = (snapshot, single = false) => {
 
   return {
     id: snapshot.id,
-    poem: data.poem,
+    content: data.content,
     era: data.era,
     poet: data.poet,
     title: data.title,
