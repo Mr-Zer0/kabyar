@@ -2,15 +2,20 @@
   <div class="container">
     <p v-if="$fetchState.pending">Loading ...</p>
 
-    <PoetCard
+    <NuxtLink
       v-for="(poet, index) in poets"
       v-else
       :key="index"
-      :name="poet.name"
-      :bio="poet.bio"
-      :poems="poet.poem_count"
-      :color="poet.color"
-    />
+      :to="'/poet/' + poet.id"
+      class="cards"
+    >
+      <PoetCard
+        :name="poet.name"
+        :bio="poet.bio"
+        :poems="poet.poem_count"
+        :color="poet.color"
+      />
+    </NuxtLink>
   </div>
 </template>
 
@@ -45,8 +50,9 @@ export default {
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
+  margin: 0 auto;
 
-  .poem-card {
+  .cards {
     margin: 10px 0;
   }
 }
